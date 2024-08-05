@@ -9,8 +9,8 @@ def generate_unique_name(file_path):
     with open(file_path, 'rb') as f:
         for chunk in iter(lambda: f.read(4096), b""):
             hash_md5.update(chunk)
-    unique_name = hash_md5.hexdigest() + '_' + str(uuid.uuid4())
-    return unique_name
+    file_hash = hash_md5.hexdigest()
+    return file_hash
 
 def scrub_and_upload_files(src_dir, dest_dir, file_extensions):
     """
@@ -41,8 +41,8 @@ def scrub_and_upload_files(src_dir, dest_dir, file_extensions):
     print("File scrubbing and uploading completed.")
 
 # Example usage
-source_directory = 'D:/'
-destination_directory = 'G:/My Drive/Photo Backup'
+source_directory = 'E:/'
+destination_directory = 'G:/My Drive/Photo Dump'
 file_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', 
                    '.mp4', '.avi', '.mkv', '.mov', '.wmv', '.flv', '.webm']
 
